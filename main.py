@@ -1,10 +1,10 @@
-import os
 from flask import Flask, render_template, request
+import itertools
 
 app = Flask(__name__)
 
-# A simple starter word dictionary
-WORD_DICTIONARY = ["cat", "act", "dog", "god", "python", "luxury", "cipher", "matrix", "unscramble"]
+# A small sample dictionary (In production, load a larger .txt wordlist)
+WORD_DICTIONARY = ["cat", "act", "dog", "god", "python", "luxury", "cipher"]
 
 def solve_words(letters):
     letters = letters.lower().strip()
@@ -17,6 +17,7 @@ def solve_words(letters):
 
 @app.route('/')
 def home():
+    # This serves your luxury introduction page
     return render_template('index.html')
 
 @app.route('/word-unscrambler', methods=['GET', 'POST'])
@@ -27,6 +28,10 @@ def word_tool():
         results = solve_words(user_input)
     return render_template('word.html', results=results)
 
+import os
+
 if __name__ == '__main__':
+    # This line automatically reads what port the cloud server requires
     port = int(os.environ.get("PORT", 5000))
+    # This tells the server to listen to all public internet requests on that port
     app.run(host='0.0.0.0', port=port)

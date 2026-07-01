@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexicon Engine | Word Unscrambler</title>
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            letter-spacing: 2px;
+        }
+        form {
+            background: #121212;
+            border: 1px solid #222;
+            padding: 30px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+        input[type="text"] {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        input[type="text"]:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+        button {
+            background: #d4af37;
+            color: #0b0b0b;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #fff;
+        }
+        .results {
+            margin-top: 25px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .word-badge {
+            display: inline-block;
+            background: #121212;
+            border: 1px solid #d4af37;
+            color: #fff;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .back-link {
+            margin-top: 20px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>WORD UNSCRAMBLER</h2>
+    
+    <form method="POST">
+        <label for="letters" style="color: #888; text-align: center;">Enter your jumbled letters:</label>
+        <input type="text" id="letters" name="letters" placeholder="e.g., tca" required autocomplete="off">
+        <button type="submit">DECRYPT LETTERS</button>
+    </form>
+
+    <div class="results">
+        {% if results is not none %}
+            <h3 style="color: #fff;">Discovered Matches:</h3>
+            {% if results %}
+                {% for word in results %}
+                    <span class="word-badge">{{ word }}</span>
+                {% endfor %}
+            {% else %}
+                <p style="color: #cc0000;">No pristine words found in database.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <a href="/" class="back-link">← Return to Studio</a>
+
+</body>
+</html>
