@@ -28,6 +28,10 @@ def word_tool():
         results = solve_words(user_input)
     return render_template('word.html', results=results)
 
+@app.route('/google4b3180399882f44e.html')
+def google_verify():
+    return "google-site-verification: google4b3180399882f44e.html"
+    
 import os
 
 if __name__ == '__main__':
