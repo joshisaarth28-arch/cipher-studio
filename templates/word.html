@@ -86,6 +86,32 @@
         .back-link:hover {
             color: #d4af37;
         }
+        
+        /* Monetag SmartLink Button Styling */
+        .ad-container {
+            margin-top: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .ad-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #121212;
+            color: #d4af37;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: 1px solid #d4af37;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        .ad-link:hover {
+            background-color: #d4af37;
+            color: #0b0b0b;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -111,7 +137,17 @@
         {% endif %}
     </div>
 
+    <!-- Monetag SmartLink Support Button -->
+    <div class="ad-container">
+        <p style="color: #666; font-size: 0.85rem; margin-bottom: 10px; letter-spacing: 1px;">HELP KEEP ENGINE ONLINE</p>
+        <a href="https://omg10.com/4/11239340" target="_blank" class="ad-link">
+            👉 Support Cipher Studio
+        </a>
+    </div>
+
     <a href="/" class="back-link">← Return to Studio</a>
 
 </body>
 </html>
+
+        
