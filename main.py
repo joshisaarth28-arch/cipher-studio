@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 import itertools
+import os
 
 app = Flask(__name__)
 
@@ -31,11 +32,23 @@ def word_tool():
 @app.route('/google4b3180399882f44e.html')
 def google_verify():
     return "google-site-verification: google4b3180399882f44e.html"
-    
-import os
+
+@app.route('/sw.js')
+def serve_sw():
+    # Serves the Monetag service worker file with the proper JavaScript header
+    js_content = """
+    self.options = {
+        "domain": "3nbf4.com",
+        "zoneId": 11238167
+    }
+    self.lary = ""
+    importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
+    """
+    return Response(js_content, mimetype='application/javascript')
 
 if __name__ == '__main__':
     # This line automatically reads what port the cloud server requires
     port = int(os.environ.get("PORT", 5000))
     # This tells the server to listen to all public internet requests on that port
     app.run(host='0.0.0.0', port=port)
+    
